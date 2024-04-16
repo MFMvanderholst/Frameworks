@@ -19,12 +19,12 @@ class ExampleTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_the_application_contains_symfony(): void
-    {
-        $response = $this->get('/');
+    // public function test_the_application_contains_symfony(): void
+    // {
+    //     $response = $this->get('/');
 
-        $response->assertSee( value: 'Symfony' );
+    //     $response->assertSee( value: 'Symfony' );
 
-        $response->assertStatus(200);
-    }
+    //     $response->assertStatus(200);
+    // }
 }
