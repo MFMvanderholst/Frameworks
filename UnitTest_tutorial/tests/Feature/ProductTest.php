@@ -7,6 +7,9 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\Product;
 
+// FeatureTest is used for a multiple methods or propperty
+// is used by Features
+
 class ProductTest extends TestCase
 {
     use RefreshDatabase;

@@ -11,14 +11,16 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Price</th>
+                                <th>USD</th>
+                                <th>EUR</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($products as $product)
                             <tr>
                                 <td>{{ $product->name }}</td>
-                                <td>{{ $product->price }}</td>
+                                <td>{{ number_format($product->price, 2) }}</td>
+                                <td>{{ $product->price_eur }}</td>
                             </tr>
                             @empty
                             <tr>
