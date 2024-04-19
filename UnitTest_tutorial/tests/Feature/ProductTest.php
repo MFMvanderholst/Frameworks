@@ -9,6 +9,7 @@ use App\Models\Product;
 
 class ProductTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic feature test product table when empty.
      */
@@ -25,14 +26,23 @@ class ProductTest extends TestCase
      */
     public function test_homepage_contains_non_empty_table(): void
     {
-        Product::create([
+        // range 
+        $product = Product::create([
             'name' => 'Product 1',
             'price' => 100,
         ]);
 
+        // action 
         $response = $this->get('/product');
 
+        // asserts 
         $response->assertStatus(200);
         $response->assertDontSee(__(key: 'No products found'));
+        // the text is correct
+        $response->assertSee(value: 'Product 1');
+        // data being passed correctly to the view 
+        $response->assertViewHas('products', function ($collection) use ($product) {
+            return $collection->contains($product);
+        });
     }
 }
